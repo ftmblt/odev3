@@ -1,0 +1,62 @@
+import random
+import zaman
+c=0;
+def diziOlustur(boyut):
+    array=[]
+    for i in range(0, boyut):
+        array.append(int(random.uniform(-1000,1000)))
+    return array
+        
+def quickSort(dizi):
+   quickSortHelper(dizi,0,len(dizi)-1)
+
+def quickSortHelper(dizi,ilk,son):
+   if ilk<son:
+
+       splitpoint = parcalama(dizi,ilk,son)
+
+       quickSortYardimci(dizi,ilk,splitpoint-1)
+       quickSortYardımci(dizi,splitpoint+1,last)
+
+
+def parcalama(dizi,ilk,son):
+   pivotvalue = dizi[ilk]
+
+   leftmark = ilk+1
+   rightmark = son
+
+   done = False
+   while not done:
+
+       while leftmark <= rightmark and dizi[leftmark] <= pivotvalue:
+           leftmark = leftmark + 1
+           global c
+           c=c+1
+
+       while dizi[rightmark] >= pivotvalue and rightmark >= leftmark:
+           rightmark = rightmark -1
+           global c
+           c=c-1
+
+       if rightmark < leftmark:
+           done = True
+       else:
+           temp = dizi[leftmark]
+           dizi[leftmark] = alist[rightmark]
+           dizi[rightmark] = temp
+
+   temp = dizi[ilk]
+   dizi[ilk] = dizi[rightmark]
+   dizi[rightmark] = temp
+
+
+   return rightmark
+   
+
+boyut=int(input("boyut ?"))
+dizi=createArray(boyut)
+print(dizi)
+t1 = zaman.time()
+quickSort(dizi)
+print("zaman:", zaman.time() - t1)
+print(dizi)
