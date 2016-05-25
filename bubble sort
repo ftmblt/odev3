@@ -1,0 +1,30 @@
+import random
+def bubbleSort(dizi):
+    karsilastirma=0
+    yerdegistirme=0
+    for passnum in range(len(dizi)-1,0,-1):
+        for i in range(passnum):
+            karsilastirma=karsilastirma+1
+            if dizi[i]>dizi[i+1]:
+                yerdegistirme=yerdegistirme+1
+                temp = dizi[i]
+                dizi[i] = dizi[i+1]
+                dizi[i+1] = temp
+    
+
+
+def  createAnArray(size):
+    array=[]
+    for i in range(0,size):
+        array.append(int(random.uniform(-1000,1000)))
+        #print(i,".item",array[i])
+    return array
+size=int(input("boyut ?"))   
+dizi=createAnArray(size)
+import time
+t_start=time.time()
+bubbleSort(dizi)
+t_end=time.time()
+for i in range(0,len(dizi)):
+    print(i,".item",dizi[i])
+print("zaman :",t_end-t_start)
